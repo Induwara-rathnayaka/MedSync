@@ -25,14 +25,14 @@ const Doctor:React.FC = () => {
           <p className="text-gray-600 mb-8">Please choose an option below</p>
           
           <div className="flex justify-center space-x-6">
-            <button 
+            {/* <button 
               className="flex flex-col items-center bg-blue-500 text-white p-4 rounded-lg hover:bg-blue-600 transition w-40 " onClick={() => navigate("/Register")}
             >
 <UserPlus size={40} className="mb-2"  />
               <span>Register</span>
-            </button>
+            </button> */}
             <button 
-              className="flex flex-col items-center bg-green-500 text-white p-4 rounded-lg hover:bg-green-600 transition w-40" onClick={() => navigate("/DLoging")}
+              className="flex flex-col items-center bg-green-500 text-white p-4 rounded-lg hover:bg-green-600 transition w-40" onClick={() => navigate("/DoctorLogin")}
             >
               <LogIn size={40} className="mb-2" />
               <span>Login</span>
