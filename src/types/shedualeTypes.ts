@@ -1,7 +1,7 @@
 export interface Sheduale{
 
     id?: string;
-    DocterEmail: string;
+    docterID: string;
     day: string; 
     time: string;
     count: number;
