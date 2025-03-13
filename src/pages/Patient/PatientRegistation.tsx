@@ -32,8 +32,8 @@ const PatientRegistation: React.FC = () => {
     }
 
     // NIC Validation
-    if (!patientRegistation.age) {
-      newErrors.NIC = "Age is required";
+    if (patientRegistation.age <= 18 || patientRegistation.age > 100) {
+      newErrors.age = "Age is required";
     }
     
     // Password Validation
@@ -81,7 +81,7 @@ const PatientRegistation: React.FC = () => {
         // Submit the patient data without confirmPassword
         await createPatient(patientData);
         alert("Registration successful");
-        navigate('/Profile');
+        navigate("/Profile",  { state: { paitienEmail: patientRegistation.email } });
       } catch (error) {
         console.error('Error submitting form:', error);
       }
@@ -115,16 +115,16 @@ const PatientRegistation: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-gray-700">NIC</label>
+              <label className="block text-gray-700">Age</label>
               <input
-                type="text"
-                name="nic"
-                placeholder="Enter your NIC"
+                type="number"
+                name="age"
+                placeholder="Enter your age"
                 value={patientRegistation.age}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               />
-              {errors.nic && <p className="text-primary-color text-sm">{errors.nic}</p>}
+              {errors.age && <p className="text-primary-color text-sm">{errors.age}</p>}
             </div>
 
             <div>

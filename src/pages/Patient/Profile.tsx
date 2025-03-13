@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { getPatientByEmail, updatePatient } from '../../services/PatientRoutes';
 import { Patient } from '../../types/patientTypes';
 
 const Profile: React.FC = () => {
+
+  const location = useLocation();
+  const {paitienEmail} = location.state || {};
+
   const navigate = useNavigate();
   const [patient, setPatient] = useState<Patient | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +23,7 @@ const Profile: React.FC = () => {
   useEffect(() => {
     const fetchPatientDetails = async () => {
       try {
-        const response = await getPatientByEmail("induwaraaaaa@gmail.com");
+        const response = await getPatientByEmail(paitienEmail);
         setPatient(response);
         setFormData(response || { name: '', age: '', email: '', contactNo: '' });
       } catch (error) {

@@ -16,7 +16,7 @@ const DoctorLogin: React.FC = () => {
       const responseData = await loging(patientEmail, password);
 
       if (responseData === "Login Sucsessfull") {
-        navigate("/Profile"); // ✅ Redirect to profile
+        navigate("/Profile",  { state: { paitienEmail: patientEmail } });
       } else {
         setErrorMessage(responseData || "Login failed. Please check your credentials.");
       }

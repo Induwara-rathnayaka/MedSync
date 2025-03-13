@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 const DocProfile: React.FC = () => {
+  
   const [doctor, setDoctor] = useState<any>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [email, setEmail] = useState("");
