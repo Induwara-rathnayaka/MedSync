@@ -3,6 +3,7 @@ import axios from "axios";
 const BASE_URL = "http://localhost:8081/shedule";
 export interface Sheduale{
   doctorID: string;
+  doctorName : string;
   day: string; 
   time: string;
   count: number;
@@ -95,6 +96,17 @@ export const deleteShedule = async (doctorID: string , day : string , time : str
 export const deleteByDoctorId1 = async (doctorID: string) => {
   try {
       const response = await axios.delete(`${BASE_URL}/deleteBydoctorId/${doctorID}`);
+      console.log(response.data);
+      return response.data; // Returns the list of schedules
+  } catch (error) {
+      console.error("Error fetching schedule:", error);
+      throw error;
+  }
+};
+
+export const incrementshedule = async (doctorName: string , day : string , time : string) => {
+  try {
+      const response = await axios.put(`${BASE_URL}/incrementShedule/${doctorName}/${day}/${time}`);
       console.log(response.data);
       return response.data; // Returns the list of schedules
   } catch (error) {

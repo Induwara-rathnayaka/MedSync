@@ -40,7 +40,7 @@ const PatientLogin: React.FC = () => {
             alert(response);
             await createBooking(booking);
 
-            navigate("/Profile");
+            navigate("/Profile",  { state: { paitienEmail: email } });
         } else if (responseData === "Patient not found") {
           localStorage.setItem("paitientEmail", email);
           alert("You are Not register Paitient ")
